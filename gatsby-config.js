@@ -10,6 +10,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `jb47uufm27j3`,
+        accessToken: `7CKSFC2UjJpW8HXFSBqIB8X11_Q88oRdGd0gQLTF3kg`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
