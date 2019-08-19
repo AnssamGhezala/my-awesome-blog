@@ -8,16 +8,13 @@ import { rhythm, scale } from "../utils/typography"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.contentfulArticle
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
+        <SEO title={post.title} description={post.subtitle || post.excerpt} />
         <article>
           <header>
             <h1
@@ -26,9 +23,9 @@ class BlogPostTemplate extends React.Component {
                 marginBottom: 0,
               }}
             >
-              {post.frontmatter.title}
+              {post.title}
             </h1>
-            <p
+            {/* <p
               style={{
                 ...scale(-1 / 5),
                 display: `block`,
@@ -36,9 +33,9 @@ class BlogPostTemplate extends React.Component {
               }}
             >
               {post.frontmatter.date}
-            </p>
+            </p> */}
           </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+          <section dangerouslySetInnerHTML={{ __html: post.content.content }} />
           <hr
             style={{
               marginBottom: rhythm(1),
@@ -61,15 +58,15 @@ class BlogPostTemplate extends React.Component {
           >
             <li>
               {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
+                <Link to={previous.slug} rel="prev">
+                  ← {previous.title}
                 </Link>
               )}
             </li>
             <li>
               {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
+                <Link to={next.slug} rel="next">
+                  {next.title} →
                 </Link>
               )}
             </li>
@@ -90,14 +87,11 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
+    contentfulArticle(slug: { eq: $slug }) {
+      title
+      subtitle
+      content {
+        content
       }
     }
   }
