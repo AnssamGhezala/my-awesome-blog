@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import Image from "gatsby-image"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -35,7 +36,20 @@ class BlogPostTemplate extends React.Component {
               {post.frontmatter.date}
             </p> */}
           </header>
-          <section dangerouslySetInnerHTML={{ __html: post.content.content }} />
+          <img
+            src={post.image.file.url}
+            style={{
+              marginRight: rhythm(1 / 2),
+              marginBottom: 0,
+              minWidth: 50,
+              borderRadius: `100%`,
+            }}
+          />
+          <section
+            dangerouslySetInnerHTML={{
+              __html: post.content.childContentfulRichText.html,
+            }}
+          />
           <hr
             style={{
               marginBottom: rhythm(1),
@@ -90,8 +104,16 @@ export const pageQuery = graphql`
     contentfulArticle(slug: { eq: $slug }) {
       title
       subtitle
+      image {
+        file {
+          url
+        }
+      }
+
       content {
-        content
+        childContentfulRichText {
+          html
+        }
       }
     }
   }
