@@ -6,6 +6,8 @@
 
 Hey there! This is a blog I made for an article in progress to be published on the 1st of September 2019 titled "Gatsby+Contentful = Smarter content management". The article explains how to build this blog using **Gatsby** and **Contentful** (CMS) so that everytime you want to add an articl to id, **you wont have to add a single line of code to your codebase**. [Check it out!](https://anssamblog.netlify.com) and let me know what you think :D
 
+![Blog Gif](https://im.ezgif.com/tmp/ezgif-1-2ba00cdf6da3.webp)
+
 ## Why?
 Say you want to build a blog, or a personal portfolio. Your blog will contain the articles that you continuously publish. 
 
