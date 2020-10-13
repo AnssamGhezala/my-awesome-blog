@@ -18,7 +18,7 @@ _**Is there a better way to manage the content of your blog without having to co
 
 The article explains how to integrate Contentful, a CMS with a blog built with Gatsby, a fast framework based on React. The blog also uses [GraphQL](https://graphql.org/learn/) to manage the data flow within in. 
 
-##  <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="22" /> Created with Gatsby
+## Created with Gatsby
 
 Here's a collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/). This blog uses the [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog) starter.
 Checkout the Gatsby documentation [here](https://www.gatsbyjs.org/docs). 
